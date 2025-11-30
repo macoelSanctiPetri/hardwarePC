@@ -205,8 +205,24 @@
       border: 1px solid rgba(148,163,184,0.2);
       margin-bottom: 10px;
       object-fit: cover;
-      height: 150px;
-      background: rgba(255,255,255,0.03);
+      height: 180px;
+      background: rgba(255,255,255,0.05);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.28);
+      filter: saturate(1.08);
+    }
+
+    .photo-note {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 9px;
+      border-radius: 10px;
+      background: rgba(56,189,248,0.12);
+      border: 1px solid rgba(56,189,248,0.3);
+      color: var(--text);
+      font-weight: 600;
+      font-size: 0.8rem;
+      margin-bottom: 6px;
     }
 
     .material-grid {
@@ -296,48 +312,56 @@
           <div class="label">Procesamiento</div>
           <h3>CPU (Procesador)</h3>
           <img class="component-img" src="https://upload.wikimedia.org/wikipedia/commons/7/7a/AMD_Ryzen_9_3950X_with_stock_cooler.jpg" alt="Procesador AMD Ryzen 9 real junto a su ventilador">
+          <div class="photo-note">📷 Foto real en color</div>
           <p>Ejecuta instrucciones y coordina el resto del sistema. Busca compatibilidad con el socket de la placa base y acompáñalo con un disipador adecuado.</p>
         </article>
         <article class="card">
           <div class="label">Cerebro digital</div>
           <h3>Placa base</h3>
           <img class="component-img" src="https://upload.wikimedia.org/wikipedia/commons/2/27/ASRock_B450M_Pro4-Motherboard.jpg" alt="Placa base ASRock colocada sobre la mesa">
+          <div class="photo-note">📷 Foto real en color</div>
           <p>Conecta todos los componentes. Revisa el socket (ej. AM5, LGA1700), los bancos de RAM soportados, ranuras M.2 y conectores de alimentación.</p>
         </article>
         <article class="card">
           <div class="label">Memoria inmediata</div>
           <h3>RAM</h3>
           <img class="component-img" src="https://upload.wikimedia.org/wikipedia/commons/a/a7/Corsair_Vengeance_RGB_Pro_DDR4_RAM.jpg" alt="Kit de memoria Corsair Vengeance con iluminación RGB">
+          <div class="photo-note">📷 Foto real en color</div>
           <p>Almacena datos temporales. Usa módulos iguales para aprovechar doble canal y verifica la frecuencia y tipo (DDR4/DDR5) soportados por la placa.</p>
         </article>
         <article class="card">
           <div class="label">Gráficos</div>
           <h3>GPU (Tarjeta gráfica)</h3>
           <img class="component-img" src="https://upload.wikimedia.org/wikipedia/commons/6/65/MSI_GeForce_RTX_3080_Gaming_X_Trio.jpg" alt="Tarjeta gráfica MSI RTX 3080 sobre fondo claro">
+          <div class="photo-note">📷 Foto real en color</div>
           <p>Procesa gráficos y cálculo paralelo. Asegura un conector PCIe x16 libre y suficiente potencia en la fuente para los conectores de 8/12 pines.</p>
         </article>
         <article class="card">
           <div class="label">Almacenamiento</div>
           <h3>SSD / HDD</h3>
           <img class="component-img" src="https://upload.wikimedia.org/wikipedia/commons/4/4a/Samsung_970_EVO_Plus_NVMe_SSD.jpg" alt="SSD NVMe Samsung 970 EVO Plus real">
+          <div class="photo-note">📷 Foto real en color</div>
           <p>Guarda el sistema y tus datos. Los SSD NVMe M.2 son rápidos y compactos; los SATA se conectan con cable de datos y alimentación separados.</p>
         </article>
         <article class="card">
           <div class="label">Energía</div>
           <h3>Fuente de alimentación (PSU)</h3>
           <img class="component-img" src="https://upload.wikimedia.org/wikipedia/commons/1/19/Corsair_RM850x_2018.jpg" alt="Fuente de alimentación Corsair RM850x real">
+          <div class="photo-note">📷 Foto real en color</div>
           <p>Suministra energía estable. Comprueba la potencia (W), la certificación de eficiencia y que tenga los conectores necesarios (24 pines, EPS 8 pines, PCIe).</p>
         </article>
         <article class="card">
           <div class="label">Refrigeración</div>
           <h3>Disipadores y ventiladores</h3>
           <img class="component-img" src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Noctua_NH-D15_CPU_cooler.jpg" alt="Disipador Noctua NH-D15 de gran tamaño">
+          <div class="photo-note">📷 Foto real en color</div>
           <p>Mantienen la temperatura bajo control. Los disipadores de CPU requieren tornillería y backplate compatible; los ventiladores deben orientarse para crear flujo de aire.</p>
         </article>
         <article class="card">
           <div class="label">Carcasa</div>
           <h3>Torre / Chasis</h3>
           <img class="component-img" src="https://upload.wikimedia.org/wikipedia/commons/3/35/NZXT_H510_white_case.jpg" alt="Caja NZXT H510 blanca abierta">
+          <div class="photo-note">📷 Foto real en color</div>
           <p>Sujeta y protege los componentes. Revisa el formato (ATX, MicroATX, ITX), el espacio para GPU y la gestión de cables.</p>
         </article>
       </div>
