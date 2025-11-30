@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guía de Montaje de PC - 1º de Bachillerato</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --panel: #1f2937;
+      --accent: #38bdf8;
+      --text: #e2e8f0;
+      --muted: #94a3b8;
+      --success: #22c55e;
+      --warning: #f59e0b;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Inter", system-ui, -apple-system, sans-serif;
+      background: radial-gradient(circle at 20% 20%, rgba(56,189,248,0.15), transparent 35%),
+                  radial-gradient(circle at 80% 10%, rgba(245,158,11,0.12), transparent 30%),
+                  var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(15,23,42,0.8);
+      backdrop-filter: blur(6px);
+      border-bottom: 1px solid rgba(148,163,184,0.2);
+    }
+
+    .wrapper {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 18px 20px 60px;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    nav h1 {
+      font-size: 1.25rem;
+      margin: 0;
+      letter-spacing: -0.02em;
+    }
+
+    nav h1 span {
+      color: var(--accent);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: var(--text);
+      text-decoration: none;
+      padding: 10px 14px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(148,163,184,0.2);
+      border-radius: 10px;
+      transition: all 0.2s ease;
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    .nav-links a:hover { border-color: var(--accent); color: var(--accent); }
+
+    main { padding-top: 18px; }
+
+    .hero {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      align-items: center;
+      gap: 24px;
+      margin: 32px 0 18px;
+    }
+
+    .hero-text h2 { font-size: 2.1rem; margin: 0 0 12px; }
+    .hero-text p { color: var(--muted); margin: 0 0 16px; line-height: 1.6; }
+
+    .highlight {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 12px;
+      background: rgba(56,189,248,0.1);
+      border: 1px solid rgba(56,189,248,0.25);
+      border-radius: 12px;
+      color: var(--accent);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      font-size: 0.8rem;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+    }
+
+    .card {
+      background: linear-gradient(150deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+      border: 1px solid rgba(148,163,184,0.2);
+      border-radius: 14px;
+      padding: 16px;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+      min-height: 190px;
+    }
+
+    .card:hover { transform: translateY(-3px); border-color: var(--accent); }
+
+    .card .label {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-bottom: 6px;
+      letter-spacing: 0.02em;
+    }
+
+    .card h3 { margin: 0 0 8px; }
+
+    .card p { margin: 0; color: var(--muted); line-height: 1.5; }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(34,197,94,0.12);
+      border: 1px solid rgba(34,197,94,0.35);
+      color: var(--text);
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+
+    section { margin: 40px 0; }
+    section h2 { margin-bottom: 6px; }
+    section > p { color: var(--muted); margin-top: 4px; }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 14px;
+      margin-top: 14px;
+    }
+
+    .step-card {
+      background: var(--panel);
+      border-radius: 12px;
+      padding: 14px 16px 16px;
+      border: 1px solid rgba(148,163,184,0.2);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .step-number {
+      width: 32px;
+      height: 32px;
+      border-radius: 10px;
+      background: rgba(56,189,248,0.2);
+      border: 1px solid rgba(56,189,248,0.4);
+      display: grid;
+      place-items: center;
+      color: var(--text);
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+
+    .step-card h3 { margin: 0 0 8px; }
+    .step-card ul { margin: 0; padding-left: 18px; color: var(--muted); line-height: 1.6; }
+
+    .note {
+      border-left: 4px solid var(--accent);
+      padding: 10px 12px;
+      background: rgba(56,189,248,0.1);
+      color: var(--text);
+      border-radius: 10px;
+      margin: 16px 0;
+      line-height: 1.5;
+    }
+
+    .table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+    .table th, .table td { padding: 10px; border: 1px solid rgba(148,163,184,0.25); text-align: left; }
+    .table th { background: rgba(255,255,255,0.04); }
+
+    .component-img {
+      width: 100%;
+      border-radius: 10px;
+      border: 1px solid rgba(148,163,184,0.2);
+      margin-bottom: 10px;
+      object-fit: cover;
+      height: 150px;
+      background: rgba(255,255,255,0.03);
+    }
+
+    .material-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 14px;
+      margin-top: 14px;
+    }
+
+    .material-card {
+      background: var(--panel);
+      border-radius: 12px;
+      padding: 14px 16px;
+      border: 1px solid rgba(148,163,184,0.2);
+    }
+
+    .material-card h3 { margin: 0 0 8px; }
+    .material-card ul { margin: 0; padding-left: 18px; color: var(--muted); line-height: 1.5; }
+
+    .checklist {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 10px;
+    }
+
+    .checklist label {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      align-items: center;
+      gap: 10px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(148,163,184,0.2);
+      padding: 10px 12px;
+      border-radius: 12px;
+      color: var(--text);
+    }
+
+    .checklist input { accent-color: var(--accent); width: 18px; height: 18px; }
+
+    footer { color: var(--muted); text-align: center; padding: 26px 0 10px; font-size: 0.9rem; }
+
+    @media (max-width: 640px) {
+      nav { flex-direction: column; align-items: flex-start; }
+      .nav-links { width: 100%; }
+      .nav-links a { flex: 1; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrapper">
+      <nav>
+        <h1>Guía de PC <span>1º Bach</span></h1>
+        <div class="nav-links">
+          <a href="#componentes">Componentes</a>
+          <a href="#materiales">Materiales</a>
+          <a href="#montaje">Montaje paso a paso</a>
+          <a href="#checks">Checklist final</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrapper">
+    <section class="hero">
+      <div class="hero-text">
+        <div class="highlight">Aprende a montar un PC desde cero</div>
+        <h2>Tu primera estación de trabajo, preparada para clase.</h2>
+        <p>Esta guía está pensada para alumnado de 1º de Bachillerato: lenguaje claro, conceptos clave y un recorrido guiado desde los componentes hasta el montaje final. Úsala como apoyo en clase o en casa.</p>
+        <div class="chip">⚡ Pro tip: lee cada paso completo antes de ejecutarlo.</div>
+        <div class="chip" style="margin-top:8px; background: rgba(245,158,11,0.15); border-color: rgba(245,158,11,0.4);">⏱️ Duración estimada: 60-90 minutos</div>
+      </div>
+      <div class="card" style="min-height:220px;">
+        <div class="label">¿Qué aprenderás?</div>
+        <h3>Conecta teoría y práctica</h3>
+        <p>Identifica cada componente, el rol que cumple y cómo encaja con el resto. Sigue los pasos de montaje y verifica tu trabajo con la checklist final.</p>
+      </div>
+    </section>
+
+    <section id="componentes">
+      <h2>Componentes esenciales</h2>
+      <p>Conoce las piezas principales de un ordenador y su función. Memoriza la pareja <strong>pieza + función</strong> para entender el flujo de datos y energía.</p>
+      <div class="card-grid">
+        <article class="card">
+          <div class="label">Procesamiento</div>
+          <h3>CPU (Procesador)</h3>
+          <img class="component-img" src="https://upload.wikimedia.org/wikipedia/commons/6/6d/Intel_Core_i9-12900K_top_view.jpg" alt="Procesador de escritorio visto desde arriba">
+          <p>Ejecuta instrucciones y coordina el resto del sistema. Busca compatibilidad con el socket de la placa base y acompáñalo con un disipador adecuado.</p>
+        </article>
+        <article class="card">
+          <div class="label">Cerebro digital</div>
+          <h3>Placa base</h3>
+          <img class="component-img" src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Motherboard_computer_assembled.jpg" alt="Placa base sobre una mesa">
+          <p>Conecta todos los componentes. Revisa el socket (ej. AM5, LGA1700), los bancos de RAM soportados, ranuras M.2 y conectores de alimentación.</p>
+        </article>
+        <article class="card">
+          <div class="label">Memoria inmediata</div>
+          <h3>RAM</h3>
+          <img class="component-img" src="https://upload.wikimedia.org/wikipedia/commons/6/60/4GB_DDR3-1333_SODIMM_Samsung.jpg" alt="Módulo de memoria RAM">
+          <p>Almacena datos temporales. Usa módulos iguales para aprovechar doble canal y verifica la frecuencia y tipo (DDR4/DDR5) soportados por la placa.</p>
+        </article>
+        <article class="card">
+          <div class="label">Gráficos</div>
+          <h3>GPU (Tarjeta gráfica)</h3>
+          <img class="component-img" src="https://upload.wikimedia.org/wikipedia/commons/3/35/Geforce-8800-ultra-bfg.jpg" alt="Tarjeta gráfica dedicada">
+          <p>Procesa gráficos y cálculo paralelo. Asegura un conector PCIe x16 libre y suficiente potencia en la fuente para los conectores de 8/12 pines.</p>
+        </article>
+        <article class="card">
+          <div class="label">Almacenamiento</div>
+          <h3>SSD / HDD</h3>
+          <img class="component-img" src="https://upload.wikimedia.org/wikipedia/commons/8/8f/M2_SSD_E16_Phison.jpg" alt="Unidad SSD NVMe M.2">
+          <p>Guarda el sistema y tus datos. Los SSD NVMe M.2 son rápidos y compactos; los SATA se conectan con cable de datos y alimentación separados.</p>
+        </article>
+        <article class="card">
+          <div class="label">Energía</div>
+          <h3>Fuente de alimentación (PSU)</h3>
+          <img class="component-img" src="https://upload.wikimedia.org/wikipedia/commons/3/32/PSU_ATX.jpg" alt="Fuente de alimentación ATX">
+          <p>Suministra energía estable. Comprueba la potencia (W), la certificación de eficiencia y que tenga los conectores necesarios (24 pines, EPS 8 pines, PCIe).</p>
+        </article>
+        <article class="card">
+          <div class="label">Refrigeración</div>
+          <h3>Disipadores y ventiladores</h3>
+          <img class="component-img" src="https://upload.wikimedia.org/wikipedia/commons/0/00/CPU_fan_and_heatsink.jpg" alt="Disipador y ventilador de CPU">
+          <p>Mantienen la temperatura bajo control. Los disipadores de CPU requieren tornillería y backplate compatible; los ventiladores deben orientarse para crear flujo de aire.</p>
+        </article>
+        <article class="card">
+          <div class="label">Carcasa</div>
+          <h3>Torre / Chasis</h3>
+          <img class="component-img" src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Antec_three_hundred_case_internal.jpg" alt="Interior de una torre de PC">
+          <p>Sujeta y protege los componentes. Revisa el formato (ATX, MicroATX, ITX), el espacio para GPU y la gestión de cables.</p>
+        </article>
+      </div>
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Componente</th>
+            <th>Qué revisar</th>
+            <th>Error común</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>CPU + Placa</td>
+            <td>Compatibilidad del socket y actualización de BIOS si es necesaria.</td>
+            <td>Forzar el procesador al colocarlo o doblar pines.</td>
+          </tr>
+          <tr>
+            <td>RAM</td>
+            <td>Colocar en los bancos recomendados (A2/B2) para doble canal.</td>
+            <td>No presionar hasta escuchar el clic de los seguros.</td>
+          </tr>
+          <tr>
+            <td>PSU</td>
+            <td>Potencia suficiente y conectores correctos.</td>
+            <td>Mezclar cables modulares de otra fuente.</td>
+          </tr>
+          <tr>
+            <td>GPU</td>
+            <td>Espacio en la caja y número de conectores PCIe.</td>
+            <td>Olvidar el soporte anti-sag en GPUs largas.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="materiales">
+      <h2>Materiales y preparativos</h2>
+      <p>Ten todo listo antes de empezar para evitar interrupciones.</p>
+
+      <div class="material-grid">
+        <div class="material-card">
+          <h3>Herramientas básicas</h3>
+          <ul>
+            <li>Destornillador Phillips magnético (nº1 o nº2).</li>
+            <li>Bridas o velcro para gestión de cables.</li>
+            <li>Pasta térmica (si el disipador no trae) y toallita con alcohol isopropílico.</li>
+            <li>Linterna o lámpara frontal para ver conectores pequeños.</li>
+          </ul>
+        </div>
+        <div class="material-card">
+          <h3>Preparación del entorno</h3>
+          <ul>
+            <li>Trabaja en una mesa sin alfombra, descarga electricidad tocando metal.</li>
+            <li>Ten a mano los manuales de la placa base y la caja.</li>
+            <li>Separa tornillos por bolsas o recipientes etiquetados.</li>
+            <li>Revisa que los cables de la fuente son los correctos para tu modelo (no mezclar).</li>
+          </ul>
+        </div>
+        <div class="material-card">
+          <h3>Compatibilidad rápida</h3>
+          <ul>
+            <li>Socket CPU = socket de la placa (ej. AM5, LGA1700).</li>
+            <li>Formato de placa y caja: ATX, mATX o ITX.</li>
+            <li>Tipo y velocidad de RAM soportada (DDR4/DDR5, MHz).</li>
+            <li>Conectores de la fuente: 24 pines + EPS 8 pines, y PCIe para GPU.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="montaje">
+      <h2>Montaje paso a paso</h2>
+      <p>Sigue el orden para evitar errores. Antes de empezar, descarga electricidad estática tocando una superficie metálica.</p>
+
+      <div class="steps">
+        <article class="step-card">
+          <div class="step-number">1</div>
+          <h3>Preparar la zona</h3>
+          <ul>
+            <li>Usa una mesa limpia y bien iluminada; evita alfombras.</li>
+            <li>Coloca todos los tornillos en pequeños recipientes.</li>
+            <li>Ten a mano destornillador Phillips, pasta térmica y manuales.</li>
+          </ul>
+        </article>
+        <article class="step-card">
+          <div class="step-number">2</div>
+          <h3>Ensamblar placa base fuera de la caja</h3>
+          <ul>
+            <li>Instala la CPU alineando la marca del triángulo; baja la palanca sin forzar.</li>
+            <li>Aplica un punto de pasta térmica (tamaño guisante) y coloca el disipador siguiendo su patrón de tornillos.</li>
+            <li>Inserta la RAM: abre los seguros, alinea la muesca y presiona hasta escuchar clic en ambos lados.</li>
+          </ul>
+        </article>
+        <article class="step-card">
+          <div class="step-number">3</div>
+          <h3>Preparar la caja</h3>
+          <ul>
+            <li>Coloca los separadores (standoffs) según el formato de la placa.</li>
+            <li>Instala la fuente de alimentación con el ventilador orientado a la rejilla de entrada.</li>
+            <li>Inserta el panel trasero (I/O shield) si la placa lo necesita.</li>
+          </ul>
+        </article>
+        <article class="step-card">
+          <div class="step-number">4</div>
+          <h3>Montar la placa base</h3>
+          <ul>
+            <li>Baja la placa cuidadosamente sobre los separadores y atornilla en forma de cruz.</li>
+            <li>Conecta el cable ATX de 24 pines y el EPS de 8 pines para la CPU.</li>
+            <li>Ordena los cables por la parte trasera para no bloquear ventiladores.</li>
+          </ul>
+        </article>
+        <article class="step-card">
+          <div class="step-number">5</div>
+          <h3>Almacenamiento y GPU</h3>
+          <ul>
+            <li>Instala SSD M.2 con su tornillo o monta SSD/HDD en bahías con sus cables SATA.</li>
+            <li>Inserta la GPU en la ranura PCIe superior; fija con tornillos y conecta cables PCIe de la PSU.</li>
+            <li>Conecta ventiladores de la caja (a placa o hub) respetando la dirección del flujo de aire.</li>
+          </ul>
+        </article>
+        <article class="step-card">
+          <div class="step-number">6</div>
+          <h3>Conexiones frontales y arranque</h3>
+          <ul>
+            <li>Conecta botones y LEDs del panel frontal (PWR, RESET, HDD LED) siguiendo el diagrama de la placa.</li>
+            <li>Une USB frontales, audio HD y cables de ventiladores.</li>
+            <li>Realiza una prueba de encendido: monitor, teclado, energía. Comprueba que hay imagen y entra en BIOS.</li>
+          </ul>
+        </article>
+      </div>
+
+      <div class="note">
+        Si no hay imagen en el primer encendido, revisa: (1) conectores de 8/24 pines, (2) RAM bien asentada, (3) salida de vídeo correcta (GPU o HDMI de placa si hay gráfica integrada), (4) actualización de BIOS si el procesador lo requiere.
+      </div>
+    </section>
+
+    <section id="checks">
+      <h2>Checklist final</h2>
+      <p>Marca cada punto antes de cerrar la torre.</p>
+      <ul class="checklist">
+        <li><label><input type="checkbox">Tornillos ajustados sin forzar y cables alejados de los ventiladores.</label></li>
+        <li><label><input type="checkbox">Entrada de aire libre en el frontal y salida en la parte trasera/superior.</label></li>
+        <li><label><input type="checkbox">BIOS reconoce RAM, discos y GPU; perfil XMP/EXPO activado.</label></li>
+        <li><label><input type="checkbox">Orden de arranque configurado con el SSD del sistema en primer lugar.</label></li>
+        <li><label><input type="checkbox">Temperaturas correctas tras 10-15 minutos de uso ligero o prueba de estrés corta.</label></li>
+        <li><label><input type="checkbox">Cables frontales (USB, audio, botones) comprobados en el arranque.</label></li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    Pensado para clase: refuerza la teoría con práctica guiada y segura.
+  </footer>
+</body>
+</html>
